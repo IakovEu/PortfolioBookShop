@@ -1,0 +1,10 @@
+@use 'variables';
+@forward 'font-face';
+
+* {
+	background-color: #ffffff;
+    font-family: "OpenSans";
+    font-weight: 400;
+    font-size: 30px;
+    color: #5C6A79;
+}
