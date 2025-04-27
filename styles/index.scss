@@ -1,10 +1,45 @@
 @use 'variables';
+@use 'reset';
 @forward 'font-face';
 
-* {
-	background-color: #ffffff;
-    font-family: "OpenSans";
-    font-weight: 400;
-    font-size: 30px;
-    color: #5C6A79;
+.navigation {
+	max-width: 1120px;
+	margin: 0 auto;
+	height: 116px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: 'Montserrat-bold';
+
+	.navigation__bookshop {
+		font-size: variables.$navTitle;
+		color: variables.$boldFont;
+	}
+	.navigation__links,
+	.navigation__icons {
+		font-size: variables.$navLink;
+		display: flex;
+		gap: 40px;
+
+		a {
+			text-decoration: none;
+			color: variables.$regularFont;
+		}
+		a:hover {
+			color: variables.$boldFont;
+		}
+		.navigation__links_active_link {
+			font-family: 'Montserrat-black';
+			color: variables.$boldFont;
+		}
+	}
+}
+
+.slider{
+    max-width: 1120px;
+    margin: 0 auto;
+
+    .slider__poster{
+        height: 702px;
+    }
 }

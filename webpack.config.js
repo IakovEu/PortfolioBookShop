@@ -1,6 +1,7 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+// const HtmlWebpackPlugin = require("html-webpack-plugin"); вставить в плагин new HtmlWebpackPlugin({template: "index.html",})
 
 module.exports = {
 	entry: path.resolve(__dirname, 'js/index.js'),
@@ -9,7 +10,7 @@ module.exports = {
 		filename: 'main.js',
 	},
 	mode: 'development',
-    plugins: [new MiniCssExtractPlugin()],
+	plugins: [new MiniCssExtractPlugin()],
 	module: {
 		rules: [
 			{
@@ -18,19 +19,19 @@ module.exports = {
 			},
 		],
 	},
-    optimization: {
-		minimizer: [`...`, new CssMinimizerPlugin()], 
-        minimize: true,
+	optimization: {
+		minimizer: [`...`, new CssMinimizerPlugin()],
+		minimize: true,
 	},
-    devServer: {
-        static: {
-          directory: path.join(__dirname, 'output'),
-        },
-        port: 3001,
-        hot: true,
-      },
-      stats: {
+	devServer: {
+		static: {
+			directory: path.join(__dirname, ''), // если пусто то берет из корня
+		},
+		port: 3001,
+		hot: true,
+	},
+	stats: {
 		children: false,
 		modulesSpace: 0,
-	  },
+	},
 };
