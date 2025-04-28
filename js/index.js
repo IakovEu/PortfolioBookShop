@@ -1,3 +1,4 @@
 import '../styles/index.scss';
+import './slider.js';
 
-console.log(2);
+console.log('main');

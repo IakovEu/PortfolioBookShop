@@ -2,44 +2,111 @@
 @use 'reset';
 @forward 'font-face';
 
-.navigation {
+@mixin btn() {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+@mixin sliderLink() {
+	font-family: 'Montserrat-bold';
+	font-size: 18px;
+	position: absolute;
+	text-decoration: none;
+	color: variables.$boldFont;
+    z-index: 1;
+}
+
+.header {
+	height: 116px;
 	max-width: 1120px;
 	margin: 0 auto;
-	height: 116px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-family: 'Montserrat-bold';
 
-	.navigation__bookshop {
-		font-size: variables.$navTitle;
-		color: variables.$boldFont;
-	}
-	.navigation__links,
-	.navigation__icons {
-		font-size: variables.$navLink;
+	.navigation {
+		width: 1120px;
+		position: fixed;
+		height: 116px;
 		display: flex;
-		gap: 40px;
+		justify-content: space-between;
+		align-items: center;
+		font-family: 'Montserrat-bold';
+        z-index: 2;
 
-		a {
-			text-decoration: none;
-			color: variables.$regularFont;
-		}
-		a:hover {
+		.navigation__bookshop {
+			font-size: variables.$navTitle;
 			color: variables.$boldFont;
 		}
-		.navigation__links_active_link {
-			font-family: 'Montserrat-black';
-			color: variables.$boldFont;
+		.navigation__links,
+		.navigation__icons {
+			font-size: variables.$navLink;
+			display: flex;
+			gap: 40px;
+
+			a {
+				text-decoration: none;
+				color: variables.$regularFont;
+			}
+			a:hover {
+				color: variables.$boldFont;
+			}
+			.navigation__links_active_link {
+				font-family: 'Montserrat-black';
+				color: variables.$boldFont;
+			}
+			button {
+				@include btn();
+			}
 		}
 	}
 }
 
-.slider{
-    max-width: 1120px;
-    margin: 0 auto;
+.slider {
+	max-width: 1120px;
+	margin: 0 auto;
+	position: relative;
 
-    .slider__poster{
-        height: 702px;
-    }
+	.slider__poster {
+		height: 702px;
+		background-image: url(../images/banner.png);
+		background-size: cover;
+	}
+	.slider__points {
+		display: flex;
+		gap: 10px;
+		margin: 17px auto 0;
+		width: 56px;
+
+		.point {
+			width: 12px;
+			@include btn();
+
+			svg {
+				fill: variables.$list;
+			}
+			svg:hover {
+				fill: variables.$listPoint;
+			}
+		}
+		.point__active svg {
+			fill: variables.$listPoint;
+		}
+	}
+	.slider__link-top {
+		@include sliderLink();
+		background-color: variables.$squareLinkTop;
+		top: 79px;
+		left: 1057px;
+        width: 149px;
+        height: 204px;
+        padding: 102px 20px 36px;
+	}
+	.slider__link-bot {
+		@include sliderLink();
+		background-color: variables.$squareLinkBot;
+		top: 359px;
+		left: 1143px;
+        width: 158px;
+        height: 273px;
+        padding: 149px 47px 36px 21px;
+	}
 }
