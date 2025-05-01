@@ -1,6 +1,6 @@
+@forward 'font-face';
 @use 'variables';
 @use 'reset';
-@forward 'font-face';
 
 @mixin btn() {
 	background-color: transparent;
@@ -10,11 +10,11 @@
 
 @mixin sliderLink() {
 	font-family: 'Montserrat-bold';
-	font-size: 18px;
+	font-size: variables.$squareLink;
 	position: absolute;
 	text-decoration: none;
 	color: variables.$boldFont;
-    z-index: 1;
+	z-index: 1;
 }
 
 .header {
@@ -30,7 +30,7 @@
 		justify-content: space-between;
 		align-items: center;
 		font-family: 'Montserrat-bold';
-        z-index: 2;
+		z-index: 2;
 
 		.navigation__bookshop {
 			font-size: variables.$navTitle;
@@ -45,9 +45,10 @@
 			a {
 				text-decoration: none;
 				color: variables.$regularFont;
-			}
-			a:hover {
-				color: variables.$boldFont;
+
+				&:hover {
+					color: variables.$boldFont;
+				}
 			}
 			.navigation__links_active_link {
 				font-family: 'Montserrat-black';
@@ -82,9 +83,10 @@
 
 			svg {
 				fill: variables.$list;
-			}
-			svg:hover {
-				fill: variables.$listPoint;
+
+				&:hover {
+					fill: variables.$listPoint;
+				}
 			}
 		}
 		.point__active svg {
@@ -96,17 +98,70 @@
 		background-color: variables.$squareLinkTop;
 		top: 79px;
 		left: 1057px;
-        width: 149px;
-        height: 204px;
-        padding: 102px 20px 36px;
+		width: 149px;
+		height: 204px;
+		padding: 102px 20px 36px;
 	}
 	.slider__link-bot {
 		@include sliderLink();
 		background-color: variables.$squareLinkBot;
 		top: 359px;
 		left: 1143px;
-        width: 158px;
-        height: 273px;
-        padding: 149px 47px 36px 21px;
+		width: 158px;
+		height: 273px;
+		padding: 149px 47px 36px 21px;
+	}
+}
+
+.catalog {
+	margin-top: 105px;
+	display: flex;
+
+	.catalog__list {
+		width: 416px;
+		height: 710px;
+		background-color: variables.$list;
+		font-family: 'Montserrat-regular';
+		font-size: variables.$listInactive;
+
+		ul {
+			padding: 45px 0 0 160px;
+		}
+		.list-li {
+			margin-bottom: 27px;
+			cursor: pointer;
+		}
+		.li-active {
+			font-family: 'Montserrat-bold';
+			font-size: variables.$listActive;
+			position: relative;
+
+			&::before {
+				content: '';
+				width: 6px;
+				height: 5.5px;
+				border-radius: 50%;
+				background-color: variables.$listPoint;
+				position: absolute;
+				left: -14px;
+				top: 6px;
+			}
+		}
+		.list-li:not(.li-active):hover {
+			// чтобы к активной ссылке не кастануть при наведении
+			@extend.li-active;
+			font-size: variables.$listInactive;
+
+			&::before {
+				top: 4px;
+			}
+		}
+	}
+
+	.catalog__cards {
+		margin: 46px 0 0 -60px;
+		width: 924px;
+		height: 500px;
+		border: 1px solid black;
 	}
 }

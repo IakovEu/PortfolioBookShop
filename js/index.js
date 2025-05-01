@@ -1,4 +1,8 @@
 import '../styles/index.scss';
-import './slider.js';
+import Slider from './slider.js';
+import Catalog from './catalog.js';
 
-console.log('main');
+// метод сразу вызвал в конструкторе слайдера
+const slider = new Slider('.point', '.slider__poster');
+const catalog = new Catalog('.list-li');
+
