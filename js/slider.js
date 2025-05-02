@@ -8,10 +8,10 @@ class Slider {
 			'../images/banner-3.png',
 		];
 		this.counter = 0;
-		this.init();
+		this.#init();
 	}
 	// Повесили обработчик событий / запустили интервал для слайдера
-	init() {
+	#init() {
 		this.points.forEach((el, ind) => {
 			el.addEventListener('click', () => {
 				this.counter = ind;

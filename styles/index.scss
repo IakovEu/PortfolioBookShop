@@ -15,22 +15,25 @@
 	text-decoration: none;
 	color: variables.$boldFont;
 	z-index: 1;
+	line-height: 22px;
 }
 
 .header {
 	height: 116px;
-	max-width: 1120px;
-	margin: 0 auto;
 
 	.navigation {
-		width: 1120px;
+		background-color: #ffffff;
+		width: 1500px;
 		position: fixed;
+		left: 50%;
+		transform: translateX(-50%);
 		height: 116px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		font-family: 'Montserrat-bold';
 		z-index: 2;
+        padding: 0 190px 0 190px;
 
 		.navigation__bookshop {
 			font-size: variables.$navTitle;
@@ -114,7 +117,8 @@
 }
 
 .catalog {
-	margin-top: 105px;
+	margin: 105px auto 0;
+	width: 1440px;
 	display: flex;
 
 	.catalog__list {
@@ -162,6 +166,64 @@
 		margin: 46px 0 0 -60px;
 		width: 924px;
 		height: 500px;
-		border: 1px solid black;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.card {
+			display: flex;
+			width: 424px;
+			margin-bottom: 96px;
+
+			img {
+				width: 212px;
+				height: 300px;
+			}
+			.description {
+				font-family: 'OpenSans';
+				font-size: variables.$cardTxt;
+				color: variables.$regularFont;
+				padding: 49px 0 48px 36px;
+
+				.description__title {
+					margin-top: 4px;
+					font-family: 'Montserrat-bold';
+					font-size: variables.$cardTitle;
+					color: variables.$boldFont;
+				}
+				.card__rating {
+					margin-top: 4px;
+				}
+				.description__txt {
+					margin-top: 16px;
+					max-height: 38px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display: -moz-box;
+					-moz-box-orient: vertical;
+					display: -webkit-box;
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
+					line-clamp: 3;
+					box-orient: vertical;
+					line-height: 13px;
+				}
+				.card__price {
+					margin-top: 16px;
+					color: variables.$boldFont;
+					font-size: variables.$cardPrice;
+				}
+				.description__btn {
+					@include btn();
+					margin-top: 16px;
+					border: solid 1px variables.$buyNow;
+					color: variables.$buyNow;
+					font-size: variables.$cardBtn;
+					font-family: 'Montserrat-bold';
+					width: 176px;
+					height: 45px;
+				}
+			}
+		}
 	}
 }
