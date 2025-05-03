@@ -1,6 +1,7 @@
 @forward 'font-face';
 @use 'variables';
 @use 'reset';
+@use 'media';
 
 @mixin btn() {
 	background-color: transparent;
@@ -278,3 +279,4 @@
 	height: 100%;
 	background-color: gold; /* Цвет заполненной части */
 }
+
