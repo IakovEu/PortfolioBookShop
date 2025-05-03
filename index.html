@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book shop</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="output/main.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
                 <ul class="navigation__icons">
                     <li><button><img src="images/user.svg" alt="profile"></button></li>
                     <li><button><img src="images/search.svg" alt="search"></button></li>
-                    <li><button><img src="images/shop-bag.svg" alt="basket"></button></li>
+                    <li><button class="navigation__icons_btn_cart"><img src="images/cart.svg" alt="basket"></button></li>
                 </ul>
         </nav>
     </header>
@@ -79,12 +79,14 @@
                     <li class="list-li">Travel & Maps</li>
                 </ul>
             </div>
-            <div class="catalog__cards"></div>
+            <div class="catalog__cards">
+                <button class="description__load">LOAD MORE</button>
+            </div>
         </section>
     </main>
 
     <footer class="footer"></footer>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="output/main.js"></script>
 </body>
 
 </html>

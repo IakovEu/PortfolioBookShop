@@ -1,14 +1,16 @@
 class Catalog {
-	constructor(listOfLi, catalogCards) {
+	constructor(listOfLi, descriptionLoad, cart) {
 		this.list = document.querySelectorAll(listOfLi);
-		this.catalog = document.querySelector(catalogCards);
+		this.loadBtn = document.querySelector(descriptionLoad);
+		this.cartBtn = document.querySelector(cart);
 		this.bookStorage = {}; // Если данные уже были запрошены по конкретному subject, то они сохраняются для текущей сессии
-		this.startIndex = 0;
 		this.subject = 'Architecture ';
+		this.startIndex = 0;
+		this.initialLoading();
 		this.changeCategory();
-		this.requestBooks();
+		this.loadMore();
 	}
-	// Повесили обработчик на элементы списка / Корректируем subject / Запрашиваем новое или грузим старое из data
+	// Повесили обработчик на элементы списка / Корректируем subject / Запрашиваем или грузим новое и убираем старое
 	changeCategory() {
 		this.list.forEach((el) => {
 			el.addEventListener('click', async () => {
@@ -41,15 +43,91 @@ class Catalog {
 				}
 				// Если пустой, то запросим, если нет, то отобразим сразу
 				if (this.bookStorage[this.subject]) {
+					document.querySelectorAll('.card').forEach((el) => el.remove());
 					this.showImages(this.bookStorage[this.subject]);
+					this.addToCart();
 				} else {
 					await this.requestBooks();
-					if (this.bookStorage[this.subject]) {
-						this.showImages(this.bookStorage[this.subject]);
-					}
+					document.querySelectorAll('.card').forEach((el) => el.remove());
+					this.showImages(this.bookStorage[this.subject]);
+					this.addToCart();
 				}
 			});
 		});
+	}
+	// Изначальная загрузка контента Architecture
+	async initialLoading() {
+		const cartData = JSON.parse(localStorage.getItem('cartInfo')) ?? {};
+		this.addRemoveBadge(cartData);
+		await this.requestBooks();
+		this.showImages(this.bookStorage[this.subject]);
+		this.addToCart();
+	}
+	// Догружаем контент
+	loadMore() {
+		this.loadBtn.addEventListener('click', async () => {
+			this.startIndex = this.bookStorage[this.subject].length;
+			await this.requestBooks();
+			document.querySelectorAll('.card').forEach((el) => el.remove());
+			this.showImages(this.bookStorage[this.subject]);
+			this.addToCart();
+		});
+	}
+	// Убираем старые обработчики и вешаем новые / стилизуем кнопку / сохраняем или удаляем из LS / вешаем бейджик на корзину
+	addToCart() {
+		const addRemove = (elem) => {
+			const indexOfCard = [...document.querySelectorAll('.card')].indexOf(
+				elem.parentElement.parentElement
+			);
+			const cartData = JSON.parse(localStorage.getItem('cartInfo')) ?? {};
+
+			if (!elem.classList.contains('in-the-cart')) {
+				elem.classList.add('in-the-cart');
+				elem.textContent = 'IN THE CART';
+
+				if (cartData[this.subject]) {
+					cartData[this.subject].push(indexOfCard);
+				} else {
+					cartData[this.subject] = [indexOfCard];
+				}
+
+				localStorage.setItem('cartInfo', JSON.stringify(cartData));
+			} else {
+				elem.classList.remove('in-the-cart');
+				elem.textContent = 'BUY NOW';
+
+				cartData[this.subject] = cartData[this.subject].filter((el) => {
+					return el !== indexOfCard;
+				});
+
+				localStorage.setItem('cartInfo', JSON.stringify(cartData));
+			}
+
+			this.addRemoveBadge(cartData);
+		};
+
+		document.querySelectorAll('.description__buy').forEach((el) => {
+			el.removeEventListener('click', () => addRemove(el));
+			el.addEventListener('click', () => addRemove(el));
+		});
+	}
+	// Вешаем бейджик на корзину
+	addRemoveBadge(data) {
+		let totalAmount = 0;
+		let badge = '';
+		for (let key in data) {
+			totalAmount += data[key].length;
+		}
+
+		if (totalAmount) {
+			badge = `<p class="badge">${totalAmount}</p>`;
+		}
+
+		if (document.querySelector('.badge')) {
+			document.querySelector('.badge').remove();
+		}
+
+		this.cartBtn.insertAdjacentHTML('beforeend', badge);
 	}
 	// Запросили картинки у Google Books / Закинули их в наш объект и грузим
 	async requestBooks() {
@@ -58,23 +136,36 @@ class Catalog {
 		);
 		const data = await response.json();
 		if (this.bookStorage[this.subject]) {
-			this.bookStorage[this.subject].concat(data.items);
+			this.bookStorage[this.subject].push(...data.items);
 		} else {
 			this.bookStorage[this.subject] = data.items;
 		}
 	}
-	// Отобразить картинки на странице
+	// Отобразить картинки на странице из bookStorage и с учетом LS
 	showImages(cardData) {
-		cardData.forEach((el) => {
+		cardData.forEach((el, ind) => {
 			const title = el.volumeInfo.title;
-			const author = el.volumeInfo.authors ?? 'unknown';
+			const author = el.volumeInfo.authors ?? 'Unknown Author';
 			const txt = el.volumeInfo.description ?? 'no information available';
+			const cartData = JSON.parse(localStorage.getItem('cartInfo')) ?? {};
+			const starFilled = '<img src="images/StarFilled.svg" alt="*">';
+			const star = '<img src="images/Star.svg" alt="*">';
+			let btn = '<button class="description__buy">BUY NOW</button>';
 			let rating = '';
 			let price = '';
+			let insertME = [star, star, star, star, star];
 			let cover = 'images/bookCover.jpg';
 
 			if (el.volumeInfo.ratingsCount) {
-				rating = `<p class="card__rating">${el.volumeInfo.ratingsCount} review</p>`;
+				for (let i = 0; i < Math.round(el.volumeInfo.averageRating); i++) {
+					insertME.pop();
+					insertME.unshift(starFilled);
+				}
+
+				rating = `<div class="card__rating">
+                            <p class="card__stars">${insertME.join('')}</p>
+                            <p>${el.volumeInfo.ratingsCount} review</p>
+                        </div>`;
 			}
 
 			if (el.volumeInfo.imageLinks) {
@@ -85,6 +176,13 @@ class Catalog {
 				price = `<p class="card__price">${el.volumeInfo.saleInfo.retailPrice} review</p>`;
 			}
 
+			if (cartData[this.subject]) {
+				if (cartData[this.subject].includes(ind)) {
+					btn =
+						'<button class="description__buy in-the-cart">IN THE CART</button>';
+				}
+			}
+
 			const card = `<div class="card">
                             <img src="${cover}" alt="*">
                             <div class="description">
@@ -93,11 +191,11 @@ class Catalog {
                                 ${rating}
                                 <p class="description__txt">${txt}</p>
                                 ${price}
-                                <button class="description__btn">BUY NOW</button>
+                                ${btn}
                             </div>
                         </div>`;
 
-			this.catalog.innerHTML += card;
+			this.loadBtn.insertAdjacentHTML('beforebegin', card);
 		});
 	}
 }

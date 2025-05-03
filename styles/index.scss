@@ -18,6 +18,20 @@
 	line-height: 22px;
 }
 
+@mixin descriptionBtns() {
+	@include btn();
+	border: solid 1px variables.$buyNow;
+	color: variables.$buyNow;
+	font-size: variables.$cardBtn;
+	font-family: 'Montserrat-bold';
+	width: 176px;
+	height: 45px;
+
+	&:active {
+		font-size: variables.$cardTxt;
+	}
+}
+
 .header {
 	height: 116px;
 
@@ -33,7 +47,7 @@
 		align-items: center;
 		font-family: 'Montserrat-bold';
 		z-index: 2;
-        padding: 0 190px 0 190px;
+		padding: 0 190px 0 190px;
 
 		.navigation__bookshop {
 			font-size: variables.$navTitle;
@@ -60,6 +74,9 @@
 			button {
 				@include btn();
 			}
+			.navigation__icons_btn_cart {
+				position: relative;
+			}
 		}
 	}
 }
@@ -81,8 +98,8 @@
 		width: 56px;
 
 		.point {
-			width: 12px;
 			@include btn();
+			width: 12px;
 
 			svg {
 				fill: variables.$list;
@@ -117,7 +134,7 @@
 }
 
 .catalog {
-	margin: 105px auto 0;
+	margin: 105px auto 74px;
 	width: 1440px;
 	display: flex;
 
@@ -165,7 +182,6 @@
 	.catalog__cards {
 		margin: 46px 0 0 -60px;
 		width: 924px;
-		height: 500px;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
@@ -193,6 +209,16 @@
 				}
 				.card__rating {
 					margin-top: 4px;
+					display: flex;
+					gap: 6px;
+					align-items: center;
+
+					.card__stars {
+						img {
+							width: 12px;
+							height: 12px;
+						}
+					}
 				}
 				.description__txt {
 					margin-top: 16px;
@@ -213,17 +239,42 @@
 					color: variables.$boldFont;
 					font-size: variables.$cardPrice;
 				}
-				.description__btn {
-					@include btn();
+				.description__buy {
+					@include descriptionBtns();
 					margin-top: 16px;
-					border: solid 1px variables.$buyNow;
-					color: variables.$buyNow;
-					font-size: variables.$cardBtn;
-					font-family: 'Montserrat-bold';
-					width: 176px;
-					height: 45px;
 				}
 			}
 		}
+		.description__load {
+			@include descriptionBtns();
+			margin: 0 auto;
+		}
 	}
+}
+// add remove styles
+.in-the-cart {
+	border: 1px solid #eeedf5 !important;
+	color: #5c6a79 !important;
+}
+
+.badge {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	font-family: 'Montserrat-regular';
+	font-size: variables.$navLink;
+	color: variables.$badgeFont;
+	background-color: variables.$badge;
+}
+
+.filled-part {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 30%; /* Заполняем 30% */
+	height: 100%;
+	background-color: gold; /* Цвет заполненной части */
 }
