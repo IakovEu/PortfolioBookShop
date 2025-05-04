@@ -58,20 +58,21 @@ class Catalog {
 	// Изначальная загрузка контента Architecture с использование lazyLoading
 	async initialLoading() {
 		const cartData = JSON.parse(localStorage.getItem('cartInfo')) ?? {};
-		this.addRemoveBadge(cartData);
+
 		await this.requestBooks();
 
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					this.showImages(this.bookStorage[this.subject]);
+					this.addToCart();
 					observer.unobserve(entry.target);
 				}
 			});
 		});
 
 		observer.observe(document.querySelector('.catalog__cards'));
-		this.addToCart();
+		this.addRemoveBadge(cartData);
 	}
 	// Догружаем контент
 	loadMore() {
@@ -83,7 +84,7 @@ class Catalog {
 			this.addToCart();
 		});
 	}
-	// Убираем старые обработчики и вешаем новые / стилизуем кнопку / сохраняем или удаляем из LS / вешаем бейджик на корзину
+	// Вешаем обработчики / стилизуем кнопку / сохраняем или удаляем из LS / вешаем бейджик на корзину
 	addToCart() {
 		const addRemove = (elem) => {
 			const indexOfCard = [...document.querySelectorAll('.card')].indexOf(
@@ -117,7 +118,6 @@ class Catalog {
 		};
 
 		document.querySelectorAll('.description__buy').forEach((el) => {
-			el.removeEventListener('click', () => addRemove(el));
 			el.addEventListener('click', () => addRemove(el));
 		});
 	}
