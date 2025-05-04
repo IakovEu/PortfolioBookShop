@@ -19,3 +19,4 @@
 - **Shows the Google Books catalog on request for the selected category using google books API**
 - **You have the option to reload the catalog of books with new ones using lazy loading**
 - **You have the option to add/remove any book in the cart**
+- **The initial catalog display works with lazyLoading using the IntersectionObserving API**
