@@ -1,5 +1,6 @@
 # BookShop
 - **git clone https://github.com/IakovEu/PortfolioBookShop**
+- **cd PortfolioBookShop**
 - **npm init --yes**
 - **npx webpack / npm run build**
 - **yes (install webpack-cli)**
