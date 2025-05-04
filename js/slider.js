@@ -3,9 +3,9 @@ class Slider {
 		this.points = document.querySelectorAll(pointsSelector);
 		this.sliderPoster = document.querySelector(sliderPosterSelector);
 		this.bgImages = [
-			'../images/banner.png',
-			'../images/banner-2.png',
-			'../images/banner-3.png',
+			'./images/banner.png',
+			'./images/banner-2.png',
+			'./images/banner-3.png',
 		];
 		this.counter = 0;
 		this.#init();
