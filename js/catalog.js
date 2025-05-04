@@ -55,12 +55,22 @@ class Catalog {
 			});
 		});
 	}
-	// Изначальная загрузка контента Architecture
+	// Изначальная загрузка контента Architecture с использование lazyLoading
 	async initialLoading() {
 		const cartData = JSON.parse(localStorage.getItem('cartInfo')) ?? {};
 		this.addRemoveBadge(cartData);
 		await this.requestBooks();
-		this.showImages(this.bookStorage[this.subject]);
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					this.showImages(this.bookStorage[this.subject]);
+					observer.unobserve(entry.target);
+				}
+			});
+		});
+
+		observer.observe(document.querySelector('.catalog__cards'));
 		this.addToCart();
 	}
 	// Догружаем контент
