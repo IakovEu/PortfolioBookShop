@@ -8,7 +8,7 @@
 - **open with live server / if u open with dev-server change path to script and path to styles (remove output/)**
 
 ## What i used
-- **Html**
+- **Html5**
 - **SASS(SCSS)**
 - **JS(ES6)**
 - **Webpack**
