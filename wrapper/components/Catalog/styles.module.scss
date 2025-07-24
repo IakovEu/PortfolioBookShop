@@ -1,0 +1,139 @@
+@mixin descriptionBtns() {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	border: solid 1px #4c3db2;
+	color: #4c3db2;
+	font-size: 8px;
+	font-family: 'Montserrat-bold';
+	width: 176px;
+	height: 45px;
+
+	&:active {
+		font-size: 10px;
+	}
+}
+
+.catalog {
+	margin: 105px auto 74px;
+	max-width: 1440px;
+	display: flex;
+
+	.catalog__list {
+		width: 416px;
+		height: 710px;
+		background-color: #efeef6;
+		font-family: 'Montserrat-regular';
+		font-size: 12px;
+
+		ul {
+			padding: 45px 0 0 160px;
+			list-style-type: none;
+		}
+		.list__li {
+			margin-bottom: 27px;
+			cursor: pointer;
+		}
+		.li__active {
+			font-family: 'Montserrat-bold';
+			font-size: 16px;
+			position: relative;
+
+			&::before {
+				content: '';
+				width: 6px;
+				height: 5.5px;
+				border-radius: 50%;
+				background-color: #756ad3;
+				position: absolute;
+				left: -14px;
+				top: 6px;
+			}
+		}
+		.list__li:not(.li__active):hover {
+			// чтобы к активной ссылке не кастануть при наведении
+			@extend.li__active;
+			font-size: 12px;
+
+			&::before {
+				top: 4px;
+			}
+		}
+	}
+
+	.catalog__cards {
+		margin: 46px 0 0 -60px;
+		width: 924px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.card {
+			display: flex;
+			width: 424px;
+			margin-bottom: 96px;
+
+			img {
+				width: 212px;
+				height: 300px;
+			}
+			.description {
+				font-family: 'OpenSans';
+				font-size: 10px;
+				color: #5c6a79;
+				padding: 49px 0 48px 36px;
+
+				.description__title {
+					margin-top: 4px;
+					font-family: 'Montserrat-bold';
+					font-size: 16px;
+					color: #1c2a39;
+				}
+				.card__rating {
+					margin-top: 4px;
+					display: flex;
+					gap: 6px;
+					align-items: center;
+
+					.card__stars {
+						img {
+							width: 12px;
+							height: 12px;
+						}
+					}
+				}
+				.description__txt {
+					margin-top: 16px;
+					max-height: 38px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display: -moz-box;
+					-moz-box-orient: vertical;
+					display: -webkit-box;
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
+					line-clamp: 3;
+					box-orient: vertical;
+					line-height: 13px;
+				}
+				.card__price {
+					margin-top: 16px;
+					color: #1c2a39;
+					font-size: 13px;
+				}
+				.description__buy {
+					@include descriptionBtns();
+					margin-top: 16px;
+				}
+			}
+		}
+		.description__load {
+			width: 100%;
+
+			button {
+				@include descriptionBtns();
+				margin-left: 40%;
+			}
+		}
+	}
+}

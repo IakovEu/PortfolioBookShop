@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "Montserrat-bold";
+    font-style: normal;
+    font-weight: 800;
+    src: local(Montserrat),
+        url(/fonts/AnyConv.com__Montserrat-Bold.woff) format(woff);
+}
+
+@font-face {
+    font-family: "Montserrat-regular";
+    font-style: normal;
+    font-weight: 400;
+    src: local(Montserrat),
+        url(/fonts/AnyConv.com__Montserrat-Regular.woff) format(woff);
+}
+
+@font-face {
+    font-family: "Montserrat-black";
+    font-style: normal;
+    font-weight: 900;
+    src: local(Montserrat),
+        url(/fonts/AnyConv.com__Montserrat-Black.woff) format(woff);
+}
+
+@font-face {
+    font-family: "OpenSans";
+    font-style: normal;
+    font-weight: 400;
+    src: local(OpenSans),
+        url(/fonts/OpenSans-VariableFont_wdth_wght.woff) format(woff);
+}
+
+*{
+    box-sizing: border-box;
+}

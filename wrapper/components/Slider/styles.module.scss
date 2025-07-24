@@ -1,0 +1,77 @@
+.slider {
+	max-width: 1120px;
+	margin: 0 auto;
+	position: relative;
+
+	.slider__poster {
+		height: 702px;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.firstPoster {
+		background-image: url(/images/banner.png);
+	}
+
+	.secondPoster {
+		background-image: url(/images/banner-2.png);
+	}
+
+	.thirdPoster {
+		background-image: url(/images/banner-3.png);
+	}
+
+	.slider__points {
+		display: flex;
+		gap: 10px;
+		margin: 17px auto 0;
+		width: 56px;
+
+		.point {
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+			width: 12px;
+
+			svg {
+				fill: #efeef6;
+
+				&:hover {
+					fill: #756ad3;
+				}
+			}
+		}
+		.point__active svg {
+			fill: #756ad3;
+		}
+	}
+
+	.slider__link_top,
+	.slider__link_bot {
+		font-family: 'Montserrat-bold';
+		font-size: 18px;
+		text-decoration: none;
+		color: #1c2a39;
+		z-index: 1;
+		line-height: 22px;
+		position: absolute;
+	}
+
+	.slider__link_top {
+		background-color: #9e98dc;
+		top: 79px;
+		left: 1057px;
+		width: 149px;
+		height: 204px;
+		padding: 102px 20px 36px;
+	}
+
+	.slider__link_bot {
+		background-color: #ff8fe6;
+		top: 359px;
+		left: 1143px;
+		width: 158px;
+		height: 273px;
+		padding: 149px 47px 36px 21px;
+	}
+}

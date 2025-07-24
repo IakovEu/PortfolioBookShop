@@ -1,0 +1,53 @@
+.header {
+	height: 116px;
+
+	.navigation {
+		background-color: #ffffffce;
+		width: 1500px;
+		position: fixed;
+		left: 50%;
+		transform: translateX(-50%);
+		height: 116px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-family: 'Montserrat-bold';
+		z-index: 2;
+		padding: 0 190px;
+
+		.navigation__bookshop {
+			font-size: 24px;
+			color: #1c2a39;
+		}
+		.navigation__links,
+		.navigation__icons {
+			font-size: 10px;
+			display: flex;
+			gap: 40px;
+
+			a {
+				text-decoration: none;
+				color: #5c6a79;
+
+				&:hover {
+					color: #1c2a39;
+				}
+			}
+
+			.navigation__links_active_link {
+				font-family: 'Montserrat-black';
+				color: #1c2a39;
+			}
+
+			button {
+				background-color: transparent;
+				border: none;
+				cursor: pointer;
+			}
+			
+			.navigation__icons_btn_cart {
+				position: relative;
+			}
+		}
+	}
+}
