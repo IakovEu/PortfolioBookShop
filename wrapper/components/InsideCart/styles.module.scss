@@ -1,0 +1,40 @@
+.info {
+	max-width: 1120px;
+	margin: 87px auto 0;
+
+	.title {
+		font-size: 24px;
+		color: #1c2a39;
+		font-family: 'Montserrat-bold';
+		margin: 0 0 19px;
+	}
+
+	.emptyCart {
+		font-family: 'Montserrat-bold';
+		margin: 100px auto;
+		width: fit-content;
+	}
+
+	.price {
+        margin: 117px 0 19px;
+		font-size: 24px;
+		color: #1c2a39;
+		font-family: 'Montserrat-bold';
+	}
+
+	.checkoutBtn {
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		border: solid 1px #4c3db2;
+		color: #4c3db2;
+		font-size: 8px;
+		font-family: 'Montserrat-bold';
+		width: 176px;
+		height: 45px;
+
+		&:active {
+			font-size: 10px;
+		}
+	}
+}
