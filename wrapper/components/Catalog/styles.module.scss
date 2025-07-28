@@ -70,21 +70,18 @@
 
 		.card {
 			display: flex;
+			align-items: center;
 			width: 424px;
 			margin-bottom: 96px;
 
-			img {
-				width: 212px;
-				height: 300px;
-			}
 			.description {
 				font-family: 'OpenSans';
 				font-size: 10px;
 				color: #5c6a79;
-				padding: 49px 0 48px 36px;
+				padding: 0 0 0 36px;
 
 				.description__title {
-					margin-top: 4px;
+					margin: 4px 0 0 0;
 					font-family: 'Montserrat-bold';
 					font-size: 16px;
 					color: #1c2a39;
@@ -130,7 +127,7 @@
 		.description__load {
 			width: 100%;
 
-			button {
+			.loadBtn {
 				@include descriptionBtns();
 				margin-left: 40%;
 			}

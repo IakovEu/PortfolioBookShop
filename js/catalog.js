@@ -183,7 +183,7 @@ class Catalog {
 			}
 
 			if (el.volumeInfo.saleInfo) {
-				price = `<p class="card__price">${el.volumeInfo.saleInfo.retailPrice} review</p>`;
+				price = `<p class="card__price">${el.volumeInfo.saleInfo.retailPrice}</p>`;
 			}
 
 			if (cartData[this.subject]) {
