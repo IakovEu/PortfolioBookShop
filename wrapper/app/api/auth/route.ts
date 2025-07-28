@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 		);
 	}
 }
-
+// Валидация 
 function validate(email: string, password: string) {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

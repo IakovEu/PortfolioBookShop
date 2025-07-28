@@ -7,11 +7,15 @@ import cover from '@/public/images/bookCover.jpg';
 import star from '@/public/images/Star.svg';
 import starFilled from '@/public/images/StarFilled.svg';
 import { Item } from '@/types/response';
+import { categories } from '@/staticData/costants';
 
 export const Catalog = () => {
 	const [data, setData] = useState<Item[] | null>(null);
-	async function fetchBooks() {
-		const res = await fetch('/api/books?subject=Architecture&startIndex=0');
+	const [activeCategory, setActiveCategory] = useState(0);
+
+	// Первичный запрос
+	async function fetchBooks(sub: string, num: number) {
+		const res = await fetch(`/api/books?subject=${sub}&startIndex=${num}`);
 		if (!res.ok) {
 			console.error('Ошибка при запросе:', res.status);
 			return;
@@ -21,29 +25,44 @@ export const Catalog = () => {
 	}
 
 	useEffect(() => {
-		fetchBooks();
+		fetchBooks('Architecture', 0);
 	}, []);
 
 	return (
 		<section className={st.catalog}>
 			<div className={st.catalog__list}>
 				<ul>
-					<li className={clsx(st.list__li, st.li__active)}>Architecture </li>
-					<li className={st.list__li}>Art & Fashion</li>
-					<li className={st.list__li}>Biography</li>
-					<li className={st.list__li}>Business</li>
-					<li className={st.list__li}>Crafts & Hobbies</li>
-					<li className={st.list__li}>Drama</li>
-					<li className={st.list__li}>Fiction</li>
-					<li className={st.list__li}>Food & Drink</li>
-					<li className={st.list__li}>Health & Wellbeing</li>
-					<li className={st.list__li}>History & Politics</li>
-					<li className={st.list__li}>Humor</li>
-					<li className={st.list__li}>Poetry</li>
-					<li className={st.list__li}>Psychology</li>
-					<li className={st.list__li}>Science</li>
-					<li className={st.list__li}>Technology</li>
-					<li className={st.list__li}>Travel & Maps</li>
+					{categories.map((el, ind) => {
+						return (
+							<li
+								className={clsx(st.list__li, {
+									[st.li__active]: activeCategory === ind,
+								})}
+								key={ind}
+								onClick={(e) => {
+									const target = e.target as HTMLElement;
+									setActiveCategory(ind);
+									fetchBooks(
+										target.textContent! === 'Art & Fashion'
+											? 'Art'
+											: target.textContent! === 'Biography'
+											? 'Biography & Autobiography'
+											: target.textContent! === 'Food & Drink'
+											? 'Cooking'
+											: target.textContent! === 'Health & Wellbeing'
+											? 'Health & Fitness'
+											: target.textContent! === 'History & Politics'
+											? 'History'
+											: target.textContent! === 'Travel & Maps'
+											? 'Travel'
+											: target.textContent!,
+										0
+									);
+								}}>
+								{el}
+							</li>
+						);
+					})}
 				</ul>
 			</div>
 			<div className={st.catalog__cards}>

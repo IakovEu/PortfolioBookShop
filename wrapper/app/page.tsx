@@ -1,4 +1,4 @@
-import { Authorization } from '@/components/AuthorizationModal';
+import { Authorization } from '@/components/Authorization';
 import { Catalog } from '@/components/Catalog';
 import { Layout } from '@/components/Layout';
 import { Slider } from '@/components/Slider';

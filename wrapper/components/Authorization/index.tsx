@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import st from './styles.module.scss';
 import { toast } from 'react-toastify';
+import { toastSettings } from '@/staticData/costants';
 
 export const Authorization = () => {
 	const [visible, setVisibility] = useState(true);
@@ -23,26 +24,11 @@ export const Authorization = () => {
 
 		if (!result.error) {
 			setVisibility(false);
-			toast('Successfully logged in', {
-				position: 'bottom-right',
-				autoClose: 1000,
-				hideProgressBar: false,
-				closeOnClick: false,
-				pauseOnHover: false,
-				draggable: false,
-				progress: undefined,
-				theme: 'dark',
-			});
+			toast('Successfully logged in', toastSettings);
 		} else {
 			toast(result.message, {
-				position: 'bottom-right',
+				...toastSettings,
 				autoClose: 2500,
-				hideProgressBar: false,
-				closeOnClick: false,
-				pauseOnHover: false,
-				draggable: false,
-				progress: undefined,
-				theme: 'dark',
 			});
 		}
 	};
