@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import st from './styles.module.scss';
 import { toast } from 'react-toastify';
-import { toastSettings } from '@/staticData/costants';
+import { toastSettings } from '@/store/staticData/costants';
 
 export const Authorization = () => {
 	const [visible, setVisibility] = useState(true);

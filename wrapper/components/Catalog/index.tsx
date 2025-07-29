@@ -7,13 +7,17 @@ import cover from '@/public/images/bookCover.jpg';
 import star from '@/public/images/Star.svg';
 import starFilled from '@/public/images/StarFilled.svg';
 import { Item } from '@/types/response';
-import { categories } from '@/staticData/costants';
+import { categories } from '@/store/staticData/costants';
+import { changeCategory } from '@/store/reducers/activeCategorySlice';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState, RootDispatch } from '@/store/reducers/store';
 
 export const Catalog = () => {
+	const dispatch = useDispatch<RootDispatch>();
+	const activeCat = useSelector((state: RootState) => state.activeCategory);
 	const [data, setData] = useState<Item[] | null>(null);
-	const [activeCategory, setActiveCategory] = useState(0);
 
-	// Первичный запрос
+	// Запрос книже4ек
 	async function fetchBooks(sub: string, num: number) {
 		const res = await fetch(`/api/books?subject=${sub}&startIndex=${num}`);
 		if (!res.ok) {
@@ -36,12 +40,12 @@ export const Catalog = () => {
 						return (
 							<li
 								className={clsx(st.list__li, {
-									[st.li__active]: activeCategory === ind,
+									[st.li__active]: activeCat === ind,
 								})}
 								key={ind}
 								onClick={(e) => {
 									const target = e.target as HTMLElement;
-									setActiveCategory(ind);
+									dispatch(changeCategory(ind));
 									fetchBooks(
 										target.textContent! === 'Art & Fashion'
 											? 'Art'
@@ -107,7 +111,13 @@ export const Catalog = () => {
 										{el.saleInfo.listPrice?.amount}{' '}
 										{el.saleInfo.listPrice?.currencyCode}
 									</p>
-									<button className={st.description__buy}>BUY NOW</button>
+									<button
+										className={st.description__buy}
+										onClick={() => {
+											console.log(ind);
+										}}>
+										BUY NOW
+									</button>
 								</div>
 							</div>
 						);
