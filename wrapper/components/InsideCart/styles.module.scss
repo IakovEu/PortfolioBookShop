@@ -1,6 +1,6 @@
 .info {
 	max-width: 1120px;
-	margin: 87px auto 0;
+	margin: 87px auto;
 
 	.title {
 		font-size: 24px;
@@ -15,8 +15,72 @@
 		width: fit-content;
 	}
 
+	.filledCart {
+		font-family: 'Montserrat-bold';
+
+		.classification {
+			display: flex;
+			justify-content: space-between;
+			margin: 19px 0 30px;
+
+			.class {
+				font-size: 10px;
+				margin: 0;
+				color: #5c6a79;
+			}
+		}
+
+		.book {
+			display: flex;
+			margin-bottom: 78px;
+			color: #1c2a39;
+
+			.item {
+				display: flex;
+				gap: 25px;
+
+				.image {
+					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+				}
+
+				.description {
+					.descriptionTitle {
+						margin: 39px 0 8px;
+					}
+
+					.author {
+						margin: 0 0 11px 0;
+						font-family: 'OpenSans';
+						font-size: 10px;
+					}
+
+					.card__rating {
+						margin-top: 4px;
+						display: flex;
+						gap: 6px;
+						align-items: center;
+
+						.card__stars {
+							margin: 0;
+
+							img {
+								width: 12px;
+								height: 12px;
+							}
+						}
+
+						.review {
+							font-family: 'OpenSans';
+							font-size: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	.price {
-        margin: 117px 0 19px;
+		margin: 117px 0 19px;
 		font-size: 24px;
 		color: #1c2a39;
 		font-family: 'Montserrat-bold';

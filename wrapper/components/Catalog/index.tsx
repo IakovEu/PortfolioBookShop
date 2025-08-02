@@ -16,26 +16,26 @@ export const Catalog = () => {
 	const catRef = useRef<number>(activeCat);
 	const preventDoubleCall = useRef<boolean>(false);
 	const [data, setData] = useState(innerStore);
+	const activeValue = Object.values(data)[catRef.current];
+	const activeKey = Object.keys(data)[catRef.current];
 
 	// Запрос книже4ек
 	async function fetchBooks(sub: string, num: number) {
 		if (preventDoubleCall.current) return;
 		preventDoubleCall.current = true;
-		sub =
-			sub === 'Art & Fashion'
-				? 'Art'
-				: sub === 'Biography'
-				? 'Biography & Autobiography'
-				: sub === 'Food & Drink'
-				? 'Cooking'
-				: sub === 'Health & Wellbeing'
-				? 'Health & Fitness'
-				: sub === 'History & Politics'
-				? 'History'
-				: sub === 'Travel & Maps'
-				? 'Travel'
-				: sub;
-		const res = await fetch(`/api/books?subject=${sub}&startIndex=${num}`);
+
+		const categoryMap: Record<string, string> = {
+			'Art & Fashion': 'Art',
+			Biography: 'Biography & Autobiography',
+			'Food & Drink': 'Cooking',
+			'Health & Wellbeing': 'Health & Fitness',
+			'History & Politics': 'History',
+			'Travel & Maps': 'Travel',
+		};
+		const res = await fetch(
+			`/api/books?subject=${categoryMap[sub] || sub}&startIndex=${num}`
+		);
+
 		if (!res.ok) {
 			console.error('Ошибка при запросе:', res.status);
 			return;
@@ -52,8 +52,8 @@ export const Catalog = () => {
 	}
 
 	useEffect(() => {
-		if (Object.values(data)[catRef.current].length === 0) {
-			fetchBooks(Object.keys(data)[catRef.current], 0);
+		if (activeValue.length === 0) {
+			fetchBooks(activeKey, 0);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -73,6 +73,7 @@ export const Catalog = () => {
 									const target = e.target as HTMLElement;
 									dispatch(changeCategory(ind));
 									catRef.current = ind;
+									// тут сокращать запись до activeValue нельзя
 									if (Object.values(data)[catRef.current].length === 0) {
 										fetchBooks(target.textContent!, 0);
 									}
@@ -84,15 +85,12 @@ export const Catalog = () => {
 				</ul>
 			</div>
 			<div className={st.catalog__cards}>
-				<Cards data={data} catRef={catRef.current} />
+				<Cards data={activeValue} />
 				<div className={st.description__load}>
 					<button
 						className={st.loadBtn}
 						onClick={() => {
-							fetchBooks(
-								Object.keys(data)[catRef.current],
-								Object.values(data)[catRef.current].length
-							);
+							fetchBooks(activeKey, activeValue.length);
 						}}>
 						LOAD MORE
 					</button>

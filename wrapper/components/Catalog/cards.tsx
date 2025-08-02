@@ -7,14 +7,9 @@ import starFilled from '@/public/images/StarFilled.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFav } from '@/store/reducers/bookStoreSlice';
 import type { RootDispatch, RootState } from '@/store/reducers/store';
-import type { InnerStore } from '@/types/innerStore';
+import { Item } from '@/types/response';
 
-type ForCards = {
-	data: InnerStore;
-	catRef: number;
-};
-
-export const Cards = ({ data, catRef }: ForCards) => {
+export const Cards = ({ data }: { data: Item[] }) => {
 	const dispatch = useDispatch<RootDispatch>();
 	const favorites = useSelector(
 		(state: RootState) => state.bookStore.favorites
@@ -22,20 +17,16 @@ export const Cards = ({ data, catRef }: ForCards) => {
 
 	return (
 		<>
-			{Object.values(data)[catRef].map((el, ind) => {
+			{data.map((el, ind) => {
 				const info = el.volumeInfo;
 				const txt = info.description ?? 'no information available';
 				const thumbCover = info.imageLinks?.thumbnail;
-				const stars = [star, star, star, star, star];
-				const rating = info.averageRating;
-				const action = Object.values(data)[catRef][ind];
-
-				if (info.ratingsCount) {
-					for (let i = 0; i < Math.round(rating); i++) {
-						stars.pop();
-						stars.unshift(starFilled);
-					}
-				}
+				const action = data[ind];
+				const filledStarsCount = Math.round(info.averageRating ?? 0);
+				const starsArray = Array.from({ length: 5 }, (_, i) =>
+					i < filledStarsCount ? starFilled : star
+				);
+				const isFav = el.volumeInfo.title in favorites;
 
 				return (
 					<div className={st.card} key={ind}>
@@ -52,11 +43,14 @@ export const Cards = ({ data, catRef }: ForCards) => {
 							{info.averageRating && (
 								<div className={st.card__rating}>
 									<p className={st.card__stars}>
-										{stars.map((e, i) => (
+										{starsArray.map((e, i) => (
 											<Image src={e} alt="*" key={i} />
 										))}
 									</p>
-									<p>{info.ratingsCount} review</p>
+									<p>
+										{info.ratingsCount} review
+										{info.ratingsCount !== 1 ? 's' : ''}
+									</p>
 								</div>
 							)}
 							<p className={st.description__txt}>{txt}</p>
@@ -66,15 +60,12 @@ export const Cards = ({ data, catRef }: ForCards) => {
 							</p>
 							<button
 								className={clsx(st.description__buy, {
-									[st.description__buyAdded]:
-										action.volumeInfo.title in favorites,
+									[st.description__buyAdded]: isFav,
 								})}
 								onClick={() => {
 									dispatch(addRemoveFav(action));
 								}}>
-								{action.volumeInfo.title in favorites
-									? 'IN THE CART'
-									: 'BUY NOW'}
+								{isFav ? 'IN THE CART' : 'BUY NOW'}
 							</button>
 						</div>
 					</div>
