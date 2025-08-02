@@ -1,3 +1,19 @@
+.editBtn {
+	margin-top: 16px;
+	background-color: transparent;
+	cursor: pointer;
+	border: solid 1px #4c3db2;
+	color: #4c3db2;
+	font-size: 8px;
+	font-family: 'Montserrat-bold';
+	width: 176px;
+	height: 45px;
+
+	&:active {
+		font-size: 10px;
+	}
+}
+
 .info {
 	max-width: 1120px;
 	margin: 87px auto 0;
@@ -29,21 +45,28 @@
 						font-size: 12px;
 					}
 				}
+			}
 
-				.editBtn {
-                    margin-top: 16px;
-					background-color: transparent;
-					cursor: pointer;
-					border: solid 1px #4c3db2;
-					color: #4c3db2;
-					font-size: 8px;
+			.changeBlock {
+				.changeTitle {
+					margin: 10px 0;
 					font-family: 'Montserrat-bold';
-					width: 176px;
-					height: 45px;
+				}
 
-					&:active {
-						font-size: 10px;
-					}
+				.input {
+					outline: none;
+					background-color: #ffe0e2;
+					border: none;
+					width: 250px;
+					height: 40px;
+					font-family: 'Montserrat-regular';
+					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+					padding: 5px;
+				}
+
+				.editBtnBlock{
+					margin: 10px auto 0;
+					width: fit-content;
 				}
 			}
 		}

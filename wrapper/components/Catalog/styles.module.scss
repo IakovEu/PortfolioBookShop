@@ -30,10 +30,12 @@
 			padding: 45px 0 0 160px;
 			list-style-type: none;
 		}
+
 		.list__li {
 			margin-bottom: 27px;
 			cursor: pointer;
 		}
+
 		.li__active {
 			font-family: 'Montserrat-bold';
 			font-size: 16px;
@@ -50,6 +52,7 @@
 				top: 6px;
 			}
 		}
+		
 		.list__li:not(.li__active):hover {
 			// чтобы к активной ссылке не кастануть при наведении
 			@extend.li__active;
@@ -86,6 +89,7 @@
 					font-size: 16px;
 					color: #1c2a39;
 				}
+
 				.card__rating {
 					margin-top: 4px;
 					display: flex;
@@ -99,6 +103,7 @@
 						}
 					}
 				}
+
 				.description__txt {
 					margin-top: 16px;
 					max-height: 38px;
@@ -113,17 +118,27 @@
 					box-orient: vertical;
 					line-height: 13px;
 				}
+
 				.card__price {
 					margin-top: 16px;
 					color: #1c2a39;
 					font-size: 13px;
 				}
+
 				.description__buy {
 					@include descriptionBtns();
 					margin-top: 16px;
 				}
+
+				.description__buyAdded {
+					@include descriptionBtns();
+					margin-top: 16px;
+					border: solid 1px #eeedf5;
+					color: #5c6a79;
+				}
 			}
 		}
+
 		.description__load {
 			width: 100%;
 

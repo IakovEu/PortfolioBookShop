@@ -1,5 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { activeCategorySlice } from './activeCategorySlice';
+import { editProfileSlice } from './editProfileSlice';
+import { bookStoreSlice } from './bookStoreSlice';
+import { authorizationSlice } from './authorizationSlice';
 import { persistCombineReducers, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {
@@ -15,12 +17,14 @@ import {
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['activeCategory'], // редьюсеры, которые нужно сохранять
+	whitelist: ['bookStore', 'authorization', 'editProfile'], 
 };
 
 // Создаем персист редьюсер
 const persistedReducer = persistCombineReducers(persistConfig, {
-	activeCategory: activeCategorySlice.reducer,
+	bookStore: bookStoreSlice.reducer,
+	authorization: authorizationSlice.reducer,
+	editProfile: editProfileSlice.reducer,
 });
 
 // Создаем store с персистом
@@ -37,6 +41,6 @@ export const store = configureStore({
 // Создаем persistor
 export const persistor = persistStore(store);
 
-// Создаем типизацию диспатча и селектора 
+// Создаем типизацию диспатча и селектора
 export type RootState = ReturnType<typeof store.getState>;
 export type RootDispatch = typeof store.dispatch;

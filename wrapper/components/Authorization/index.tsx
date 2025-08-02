@@ -1,13 +1,30 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import st from './styles.module.scss';
 import { toast } from 'react-toastify';
 import { toastSettings } from '@/store/staticData/costants';
+import { RootDispatch, RootState } from '@/store/reducers/store';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+	setVisibility,
+	setUserData,
+} from '@/store/reducers/authorizationSlice';
 
 export const Authorization = () => {
-	const [visible, setVisibility] = useState(true);
+	const visibility = useSelector(
+		(state: RootState) => state.authorization.visibility
+	);
+	const userToken = useSelector(
+		(state: RootState) => state.authorization.token
+	);
+	const dispatch = useDispatch<RootDispatch>();
 	const [mail, setMail] = useState<string>('');
 	const [pass, setPass] = useState<string>('');
+
+	useEffect(() => {
+		dispatch(setVisibility(userToken.length === 0));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const login = async () => {
 		const bodyPost = {
@@ -23,7 +40,8 @@ export const Authorization = () => {
 		const result = await response.json();
 
 		if (!result.error) {
-			setVisibility(false);
+			dispatch(setUserData([mail, pass, result.token]));
+			dispatch(setVisibility(false));
 			toast('Successfully logged in', toastSettings);
 		} else {
 			toast(result.message, {
@@ -34,14 +52,14 @@ export const Authorization = () => {
 	};
 
 	return (
-		visible && (
+		visibility && (
 			<section className={st.authorization}>
 				<div className={st.topPanel}>
 					<h3 className={st.title}>User authorization</h3>
 					<button
 						className={st.btnClose}
 						onClick={() => {
-							setVisibility(false);
+							dispatch(setVisibility(false));
 						}}>
 						&#x2715;
 					</button>
