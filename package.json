@@ -1,26 +1,33 @@
 {
-  "name": "bookshop",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "wrapper",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx webpack",
-    "server": "npx webpack serve"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "@types/redux-persist": "^4.0.0",
+    "clsx": "^2.1.1",
+    "next": "15.4.3",
+    "normalize.css": "^8.0.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-redux": "^9.2.0",
+    "react-toastify": "^11.0.5",
+    "redux-persist": "^6.0.0"
+  },
   "devDependencies": {
-    "css-loader": "^7.1.2",
-    "css-minimizer-webpack-plugin": "^7.0.2",
-    "html-webpack-plugin": "^5.6.3",
-    "mini-css-extract-plugin": "^2.9.2",
-    "sass": "^1.87.0",
-    "sass-loader": "^16.0.5",
-    "style-loader": "^4.0.0",
-    "webpack": "^5.99.6",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.1"
-  },
-  "type": "ES6"
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.3",
+    "sass": "^1.89.2",
+    "typescript": "^5"
+  }
 }

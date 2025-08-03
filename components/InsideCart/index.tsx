@@ -10,6 +10,7 @@ import star from '@/public/Star.svg';
 import starFilled from '@/public/StarFilled.svg';
 import minus from '@/public/minus.svg';
 import plus from '@/public/plus.svg';
+import { Authorization } from '../Authorization';
 
 export const InsideCart = () => {
 	const dispatch = useDispatch<RootDispatch>();
@@ -113,6 +114,7 @@ export const InsideCart = () => {
 			)}
 			<h2 className={st.totalPrice}>TOTAL PRICE: {totalPrice} RUB</h2>
 			<button className={st.checkoutBtn}>CHECKOUT</button>
+			<Authorization />
 		</section>
 	);
 };

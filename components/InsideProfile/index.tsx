@@ -28,7 +28,7 @@ export const InsideProfile = () => {
 	const nameRef = useRef('');
 	const mailRef = useRef('');
 	const passRef = useRef('');
-	const capName = name[0].toUpperCase() + name.slice(1);
+	const capName = name[0]?.toUpperCase() + name.slice(1);
 	const inputsMap = [
 		['Change your name', 'New name:', nameRef],
 		['Change your email', 'New email:', mailRef],
