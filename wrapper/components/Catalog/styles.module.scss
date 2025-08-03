@@ -1,11 +1,12 @@
 @mixin descriptionBtns() {
+	font-family: 'Montserrat';
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
 	border: solid 1px #4c3db2;
 	color: #4c3db2;
 	font-size: 8px;
-	font-family: 'Montserrat-bold';
+	font-weight: 700;
 	width: 176px;
 	height: 45px;
 
@@ -23,7 +24,6 @@
 		width: 416px;
 		height: 710px;
 		background-color: #efeef6;
-		font-family: 'Montserrat-regular';
 		font-size: 12px;
 
 		ul {
@@ -37,7 +37,7 @@
 		}
 
 		.li__active {
-			font-family: 'Montserrat-bold';
+			font-weight: 700;
 			font-size: 16px;
 			position: relative;
 
@@ -52,7 +52,7 @@
 				top: 6px;
 			}
 		}
-		
+
 		.list__li:not(.li__active):hover {
 			// чтобы к активной ссылке не кастануть при наведении
 			@extend.li__active;
@@ -78,14 +78,16 @@
 			margin-bottom: 96px;
 
 			.description {
-				font-family: 'OpenSans';
+				font-family: 'Open Sans';
+				font-weight: 400;
 				font-size: 10px;
 				color: #5c6a79;
 				padding: 0 0 0 36px;
 
 				.description__title {
 					margin: 4px 0 0 0;
-					font-family: 'Montserrat-bold';
+					font-family: 'Montserrat';
+					font-weight: 700;
 					font-size: 16px;
 					color: #1c2a39;
 				}
@@ -120,6 +122,8 @@
 				}
 
 				.card__price {
+					font-family: 'Montserrat';
+					font-weight: 700;
 					margin-top: 16px;
 					color: #1c2a39;
 					font-size: 13px;
@@ -145,6 +149,69 @@
 			.loadBtn {
 				@include descriptionBtns();
 				margin-left: 40%;
+			}
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.catalog {
+		.catalog__list ul {
+			padding: 45px 0 0 40px;
+		}
+
+		.catalog__cards {
+			margin-left: 40px;
+		}
+	}
+}
+
+@media (max-width: 900px) {
+	.catalog {
+		margin-top: 50px;
+
+		.catalog__cards {
+			.card {
+				margin-bottom: 20px;
+			}
+
+			.description__load {
+				margin-top: 20px;
+			}
+		}
+	}
+}
+
+@media (max-width: 650px) {
+	.catalog {
+		display: block;
+
+		.catalog__list {
+			width: 100%;
+			height: auto;
+
+			ul {
+				padding: 20px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 25px;
+			}
+			.list-li {
+				margin: 0;
+			}
+		}
+
+		.catalog__cards {
+			margin: 20px 0 0 0;
+			width: 100%;
+			justify-content: center;
+
+			.card img {
+				width: 150px;
+				height: 225px;
+			}
+			.card .description {
+				padding: 10px;
 			}
 		}
 	}

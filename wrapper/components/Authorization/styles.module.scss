@@ -14,7 +14,7 @@
 		margin-left: 61px;
 
 		.title {
-			font-family: 'Montserrat-bold';
+			font-weight: 700;
 			font-size: 16px;
 			margin: 20px auto 30px;
 		}
@@ -35,7 +35,6 @@
 	}
 
 	.subTitle {
-		font-family: 'Montserrat-regular';
 		font-weight: 600;
 		font-size: 14px;
 		margin: 10px 0;
@@ -48,7 +47,6 @@
 		border: 1px solid #4c3db2;
 		outline: none;
 		color: #4c3db2;
-		font-family: 'Montserrat-regular';
 		font-weight: 600;
 	}
 
@@ -61,7 +59,7 @@
 			cursor: pointer;
 			color: #ffffff;
 			font-size: 10px;
-			font-family: 'Montserrat-bold';
+			font-weight: 700;
 			width: 176px;
 			height: 45px;
 

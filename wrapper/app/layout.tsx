@@ -7,8 +7,9 @@ import ClientProviderWrapper from '@/components/ClientProviderWrapper';
 export const metadata: Metadata = {
 	title: 'Book shop',
 	description: 'Book shop Next.js project',
+	authors: [{ name: 'Iakov' }],
 	icons: {
-		icon: '/images/favicon.ico', // путь к фавиконке
+		icon: '/favicon.ico', // путь к фавиконке
 	},
 };
 

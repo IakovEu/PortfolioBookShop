@@ -5,7 +5,7 @@
 	border: solid 1px #4c3db2;
 	color: #4c3db2;
 	font-size: 8px;
-	font-family: 'Montserrat-bold';
+	font-weight: 700;
 	width: 176px;
 	height: 45px;
 
@@ -23,7 +23,7 @@
 	.profile {
 		.titleProfile {
 			font-size: 24px;
-			font-family: 'Montserrat-bold';
+			font-weight: 700;
 			margin: 0;
 			color: #1c2a39;
 		}
@@ -35,7 +35,7 @@
 
 			.profileData {
 				.nameAndEmail {
-					font-family: 'Montserrat-bold';
+					font-weight: 700;
 					font-size: 24px;
 					margin: 0 0 25px;
 					text-wrap: nowrap;
@@ -50,7 +50,7 @@
 			.changeBlock {
 				.changeTitle {
 					margin: 10px 0;
-					font-family: 'Montserrat-bold';
+					font-weight: 700;
 				}
 
 				.input {
@@ -59,12 +59,11 @@
 					border: none;
 					width: 250px;
 					height: 40px;
-					font-family: 'Montserrat-regular';
 					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 					padding: 5px;
 				}
 
-				.editBtnBlock{
+				.editBtnBlock {
 					margin: 10px auto 0;
 					width: fit-content;
 				}
@@ -83,12 +82,11 @@
 			width: fit-content;
 			margin: 17px auto 29px;
 			font-size: 12px;
-			font-family: 'Montserrat-bold';
+			font-weight: 700;
 		}
 
 		.txtAbout {
 			font-size: 12px;
-			font-family: 'Montserrat-regular';
 			font-weight: 600;
 			color: #5c6a79;
 		}

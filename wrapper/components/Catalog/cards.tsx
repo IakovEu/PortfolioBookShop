@@ -1,11 +1,12 @@
 import st from './styles.module.scss';
 import clsx from 'clsx';
 import Image from 'next/image';
-import cover from '@/public/images/bookCover.jpg';
-import star from '@/public/images/Star.svg';
-import starFilled from '@/public/images/StarFilled.svg';
+import cover from '@/public/bookCover.jpg';
+import star from '@/public/Star.svg';
+import starFilled from '@/public/StarFilled.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { addRemoveFav } from '@/store/reducers/bookStoreSlice';
+import { setVisibility } from '@/store/reducers/authorizationSlice';
 import type { RootDispatch, RootState } from '@/store/reducers/store';
 import { Item } from '@/types/response';
 
@@ -14,6 +15,9 @@ export const Cards = ({ data }: { data: Item[] }) => {
 	const favorites = useSelector(
 		(state: RootState) => state.bookStore.favorites
 	);
+	const userToken = useSelector(
+		(state: RootState) => state.authorization.token
+	);
 
 	return (
 		<>
@@ -21,7 +25,6 @@ export const Cards = ({ data }: { data: Item[] }) => {
 				const info = el.volumeInfo;
 				const txt = info.description ?? 'no information available';
 				const thumbCover = info.imageLinks?.thumbnail;
-				const action = data[ind];
 				const filledStarsCount = Math.round(info.averageRating ?? 0);
 				const starsArray = Array.from({ length: 5 }, (_, i) =>
 					i < filledStarsCount ? starFilled : star
@@ -55,7 +58,7 @@ export const Cards = ({ data }: { data: Item[] }) => {
 							)}
 							<p className={st.description__txt}>{txt}</p>
 							<p className={st.card__price}>
-								{el.saleInfo.listPrice?.amount}{' '}
+								{el.saleInfo.listPrice?.amount.toFixed(2)}{' '}
 								{el.saleInfo.listPrice?.currencyCode}
 							</p>
 							<button
@@ -63,7 +66,11 @@ export const Cards = ({ data }: { data: Item[] }) => {
 									[st.description__buyAdded]: isFav,
 								})}
 								onClick={() => {
-									dispatch(addRemoveFav(action));
+									if (userToken.length !== 0) {
+										dispatch(addRemoveFav(el));
+									} else {
+										dispatch(setVisibility(true));
+									}
 								}}>
 								{isFav ? 'IN THE CART' : 'BUY NOW'}
 							</button>

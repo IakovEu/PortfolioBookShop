@@ -35,7 +35,22 @@ export const bookStoreSlice = createSlice({
 				};
 			}
 		},
+		decrease: (state, action: PayloadAction<FavoritesItem>) => {
+			const title = action.payload.data.volumeInfo.title;
+			const amount = action.payload.amount;
+
+			if (amount === 1) {
+				delete state.favorites[title];
+			} else {
+				state.favorites[title].amount -= 1;
+			}
+		},
+		increase: (state, action: PayloadAction<FavoritesItem>) => {
+			const title = action.payload.data.volumeInfo.title;
+			state.favorites[title].amount += 1;
+		},
 	},
 });
 
-export const { changeCategory, addRemoveFav } = bookStoreSlice.actions;
+export const { changeCategory, addRemoveFav, increase, decrease } =
+	bookStoreSlice.actions;

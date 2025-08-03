@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import st from './styles.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import arrow from '@/public/images/arrow.svg';
+import arrow from '@/public/arrow.svg';
 import { PointSvg } from './pointSvg';
 
 export const Slider = () => {

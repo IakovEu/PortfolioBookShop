@@ -11,7 +11,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		font-family: 'Montserrat-bold';
+		font-weight: 700;
 		z-index: 2;
 		padding: 0 190px;
 
@@ -25,6 +25,10 @@
 			display: flex;
 			gap: 40px;
 
+			.search {
+				padding: 0;
+			}
+
 			a {
 				text-decoration: none;
 				color: #5c6a79;
@@ -35,8 +39,25 @@
 			}
 
 			.navigation__links_active_link {
-				font-family: 'Montserrat-black';
+				font-weight: 800;
 				color: #1c2a39;
+			}
+
+			.navigation__icons_btn_cart {
+				.badge {
+					position: absolute;
+					top: 9px;
+					left: 5px;
+					width: 13px;
+					height: 13px;
+					border-radius: 50%;
+					font-size: 10px;
+					color: #ffffff;
+					background-color: #ff353a;
+					text-align: center;
+					font-weight: 400;
+					padding-top: 1px;
+				}
 			}
 
 			button {
@@ -44,9 +65,59 @@
 				border: none;
 				cursor: pointer;
 			}
-			
+
 			.navigation__icons_btn_cart {
 				position: relative;
+			}
+		}
+	}
+}
+
+@media (max-width: 1500px) {
+	.header {
+		.navigation {
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.header {
+		.navigation {
+			padding: 0 20px;
+		}
+	}
+}
+
+@media (max-width: 900px) {
+	.header {
+		.navigation {
+			.navigation__bookshop {
+				font-size: 20px;
+			}
+
+			.navigation__links {
+				font-size: 9px;
+				gap: 20px;
+			}
+
+			.navigation__icons {
+				gap: 15px;
+			}
+		}
+	}
+}
+
+@media (max-width: 650px) {
+	.header {
+		.navigation {
+			.navigation__links {
+				flex-direction: column;
+				gap: 15px;
+			}
+
+			.navigation__icons {
+				flex-direction: column;
 			}
 		}
 	}

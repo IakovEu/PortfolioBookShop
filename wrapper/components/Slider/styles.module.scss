@@ -10,15 +10,15 @@
 	}
 
 	.firstPoster {
-		background-image: url(/images/banner.png);
+		background-image: url(/banner.png);
 	}
 
 	.secondPoster {
-		background-image: url(/images/banner-2.png);
+		background-image: url(/banner-2.png);
 	}
 
 	.thirdPoster {
-		background-image: url(/images/banner-3.png);
+		background-image: url(/banner-3.png);
 	}
 
 	.slider__points {
@@ -48,7 +48,7 @@
 
 	.slider__link_top,
 	.slider__link_bot {
-		font-family: 'Montserrat-bold';
+		font-weight: 700;
 		font-size: 18px;
 		text-decoration: none;
 		color: #1c2a39;
@@ -73,5 +73,44 @@
 		width: 158px;
 		height: 273px;
 		padding: 149px 47px 36px 21px;
+	}
+}
+
+@media (max-width: 1500px) {
+	.slider {
+		.slider__link_top {
+			top: 0;
+			left: 971px;
+		}
+
+		.slider__link_bot {
+			top: 429px;
+			left: 962px;
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.slider {
+		.slider__link_top,
+		.slider__link_bot {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 900px) {
+	.slider {
+		.slider__poster {
+			height: 450px;
+		}
+	}
+}
+
+@media (max-width: 650px) {
+	.slider {
+		.slider__poster {
+			height: 350px;
+		}
 	}
 }

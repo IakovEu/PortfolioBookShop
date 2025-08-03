@@ -5,37 +5,59 @@
 	.title {
 		font-size: 24px;
 		color: #1c2a39;
-		font-family: 'Montserrat-bold';
+		font-weight: 700;
 		margin: 0 0 19px;
 	}
 
 	.emptyCart {
-		font-family: 'Montserrat-bold';
+		font-weight: 700;
 		margin: 100px auto;
 		width: fit-content;
 	}
 
 	.filledCart {
-		font-family: 'Montserrat-bold';
+		font-weight: 700;
 
 		.classification {
 			display: flex;
 			justify-content: space-between;
 			margin: 19px 0 30px;
 
-			.class {
+			.class1,
+			.class2,
+			.class3,
+			.class4 {
 				font-size: 10px;
 				margin: 0;
 				color: #5c6a79;
+			}
+
+			.class1 {
+				width: 300px;
+			}
+
+			.class2 {
+				width: 176px;
+			}
+
+			.class3 {
+				width: 112px;
+			}
+
+			.class4 {
+				width: 117px;
 			}
 		}
 
 		.book {
 			display: flex;
+			justify-content: space-between;
+			align-items: center;
 			margin-bottom: 78px;
 			color: #1c2a39;
 
 			.item {
+				width: 300px;
 				display: flex;
 				gap: 25px;
 
@@ -50,8 +72,10 @@
 
 					.author {
 						margin: 0 0 11px 0;
-						font-family: 'OpenSans';
+						font-family: 'Open Sans';
 						font-size: 10px;
+						color: #5c6a79;
+						font-weight: 400;
 					}
 
 					.card__rating {
@@ -70,20 +94,59 @@
 						}
 
 						.review {
-							font-family: 'OpenSans';
+							font-family: 'Open Sans';
 							font-size: 10px;
+							color: #5c6a79;
+							font-weight: 400;
 						}
 					}
 				}
 			}
+
+			.quantity {
+				width: 176px;
+				height: 45px;
+				display: flex;
+				justify-content: space-between;
+				border: 2px solid #eeedf5;
+
+				.quantityBtn {
+					padding: 10px 16px;
+					background-color: transparent;
+					border: none;
+					cursor: pointer;
+
+					img {
+						width: 21px;
+						height: 20px;
+					}
+
+					&:active {
+						box-shadow: 0 0 10px 5px #4c3db2;
+					}
+				}
+
+				.quantityNum {
+					margin: 10px 0;
+				}
+			}
+
+			.price {
+				font-size: 18px;
+			}
+
+			.delivery {
+				font-size: 12px;
+				color: #5c6a79;
+			}
 		}
 	}
 
-	.price {
+	.totalPrice {
 		margin: 117px 0 19px;
 		font-size: 24px;
 		color: #1c2a39;
-		font-family: 'Montserrat-bold';
+		font-weight: 700;
 	}
 
 	.checkoutBtn {
@@ -93,7 +156,7 @@
 		border: solid 1px #4c3db2;
 		color: #4c3db2;
 		font-size: 8px;
-		font-family: 'Montserrat-bold';
+		font-weight: 700;
 		width: 176px;
 		height: 45px;
 
