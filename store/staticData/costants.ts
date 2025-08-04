@@ -33,3 +33,7 @@ export const innerStore: InnerStore = {
 	Technology: [],
 	'Travel & Maps': [],
 };
+
+// Апи ключи
+export const localKey = process.env.NEXT_PUBLIC_API_KEY;
+export const secretKey = process.env.API_SECRET_KEY;

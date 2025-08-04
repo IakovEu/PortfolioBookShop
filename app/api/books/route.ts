@@ -1,10 +1,12 @@
+import { localKey, secretKey } from '@/store/staticData/costants';
 import { ApiResponse } from '@/types/response';
 
 export async function GET(request: Request) {
 	const url = new URL(request.url);
 	const subject = url.searchParams.get('subject');
 	const startIndex = url.searchParams.get('startIndex');
-	const apiUrl = `https://www.googleapis.com/books/v1/volumes?q="subject:${subject}"&key=AIzaSyA3JnrUQZLRo3GzvFVtY9FDWHZ2iTOrt54&printType=books&startIndex=${startIndex}&maxResults=6&langRestrict=en`;
+	const key = localKey || secretKey;
+	const apiUrl = `https://www.googleapis.com/books/v1/volumes?q="subject:${subject}"&key=${key}&printType=books&startIndex=${startIndex}&maxResults=6&langRestrict=en`;
 
 	try {
 		const response = await fetch(apiUrl);
@@ -22,8 +24,6 @@ export async function GET(request: Request) {
 		);
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	} catch (error) {
-		return new Response(
-			JSON.stringify({ error: 'Invalid request' })
-		);
+		return new Response(JSON.stringify({ error: 'Invalid request' }));
 	}
 }
