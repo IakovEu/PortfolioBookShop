@@ -18,6 +18,8 @@
 .catalog {
 	margin: 105px auto 74px;
 	max-width: 1440px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 
 	.catalog__list {
@@ -54,7 +56,6 @@
 		}
 
 		.list__li:not(.li__active):hover {
-			// чтобы к активной ссылке не кастануть при наведении
 			@extend.li__active;
 			font-size: 12px;
 
@@ -67,12 +68,21 @@
 	.catalog__cards {
 		margin: 46px 0 0 -60px;
 		width: 924px;
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
 		justify-content: space-between;
 
 		.card {
+			display: -webkit-box;
+			display: -ms-flexbox;
 			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
 			align-items: center;
 			width: 424px;
 			margin-bottom: 96px;
@@ -94,8 +104,12 @@
 
 				.card__rating {
 					margin-top: 4px;
+					display: -webkit-box;
+					display: -ms-flexbox;
 					display: flex;
 					gap: 6px;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
 					align-items: center;
 
 					.card__stars {
@@ -110,9 +124,9 @@
 					margin-top: 16px;
 					max-height: 38px;
 					overflow: hidden;
+					-o-text-overflow: ellipsis;
 					text-overflow: ellipsis;
 					display: -moz-box;
-					-moz-box-orient: vertical;
 					display: -webkit-box;
 					-webkit-line-clamp: 3;
 					-webkit-box-orient: vertical;
@@ -192,7 +206,10 @@
 
 			ul {
 				padding: 20px;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
+				-ms-flex-wrap: wrap;
 				flex-wrap: wrap;
 				gap: 25px;
 			}
@@ -204,6 +221,8 @@
 		.catalog__cards {
 			margin: 20px 0 0 0;
 			width: 100%;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
 			justify-content: center;
 
 			.card img {

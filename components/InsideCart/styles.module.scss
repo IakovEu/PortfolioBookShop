@@ -12,6 +12,8 @@
 	.emptyCart {
 		font-weight: 700;
 		margin: 100px auto;
+		width: -webkit-fit-content;
+		width: -moz-fit-content;
 		width: fit-content;
 	}
 
@@ -19,7 +21,11 @@
 		font-weight: 700;
 
 		.classification {
+			display: -webkit-box;
+			display: -ms-flexbox;
 			display: flex;
+			-webkit-box-pack: justify;
+			-ms-flex-pack: justify;
 			justify-content: space-between;
 			margin: 19px 0 30px;
 
@@ -50,18 +56,27 @@
 		}
 
 		.book {
+			display: -webkit-box;
+			display: -ms-flexbox;
 			display: flex;
+			-webkit-box-pack: justify;
+			-ms-flex-pack: justify;
 			justify-content: space-between;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
 			align-items: center;
 			margin-bottom: 78px;
 			color: #1c2a39;
 
 			.item {
 				width: 300px;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
 				gap: 25px;
 
 				.image {
+					-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 				}
 
@@ -80,8 +95,12 @@
 
 					.card__rating {
 						margin-top: 4px;
+						display: -webkit-box;
+						display: -ms-flexbox;
 						display: flex;
 						gap: 6px;
+						-webkit-box-align: center;
+						-ms-flex-align: center;
 						align-items: center;
 
 						.card__stars {
@@ -106,7 +125,11 @@
 			.quantity {
 				width: 176px;
 				height: 45px;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
 				justify-content: space-between;
 				border: 2px solid #eeedf5;
 
@@ -122,6 +145,7 @@
 					}
 
 					&:active {
+						-webkit-box-shadow: 0 0 10px 5px #4c3db2;
 						box-shadow: 0 0 10px 5px #4c3db2;
 					}
 				}
@@ -215,6 +239,7 @@
 				.item {
 					gap: 5px;
 					width: 120px;
+					-ms-flex-wrap: wrap;
 					flex-wrap: wrap;
 
 					.image {
@@ -231,6 +256,9 @@
 				}
 
 				.quantity {
+					-webkit-box-orient: vertical;
+					-webkit-box-direction: reverse;
+					-ms-flex-direction: column-reverse;
 					flex-direction: column-reverse;
 					height: 145px;
 					width: 45px;

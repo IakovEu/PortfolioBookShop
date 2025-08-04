@@ -22,6 +22,8 @@
 	}
 
 	.slider__points {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
 		gap: 10px;
 		margin: 17px auto 0;

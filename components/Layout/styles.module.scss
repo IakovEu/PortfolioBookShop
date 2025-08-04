@@ -6,10 +6,18 @@
 		width: 1500px;
 		position: fixed;
 		left: 50%;
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
 		transform: translateX(-50%);
 		height: 116px;
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
 		justify-content: space-between;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
 		align-items: center;
 		font-weight: 700;
 		z-index: 2;
@@ -22,6 +30,8 @@
 		.navigation__links,
 		.navigation__icons {
 			font-size: 10px;
+			display: -webkit-box;
+			display: -ms-flexbox;
 			display: flex;
 			gap: 40px;
 
@@ -112,11 +122,17 @@
 	.header {
 		.navigation {
 			.navigation__links {
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
 				flex-direction: column;
 				gap: 15px;
 			}
 
 			.navigation__icons {
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
 				flex-direction: column;
 			}
 		}

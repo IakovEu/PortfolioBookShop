@@ -2,6 +2,8 @@
 	position: fixed;
 	left: 50%;
 	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	background-color: rgba(255, 255, 255);
 	z-index: 100;
@@ -10,6 +12,8 @@
 	text-align: center;
 
 	.topPanel {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
 		margin-left: 61px;
 
@@ -25,6 +29,8 @@
 			font-weight: 600;
 			background-color: transparent;
 			border: none;
+			height: -webkit-fit-content;
+			height: -moz-fit-content;
 			height: fit-content;
 			cursor: pointer;
 
@@ -71,7 +77,7 @@
 }
 
 @media (max-width: 650px) {
-	.authorization{
+	.authorization {
 		width: 350px;
 	}
 }
