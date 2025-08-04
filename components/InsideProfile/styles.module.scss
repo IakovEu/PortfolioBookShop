@@ -38,7 +38,7 @@
 					font-weight: 700;
 					font-size: 24px;
 					margin: 0 0 25px;
-					text-wrap: nowrap;
+					width: 300px;
 					line-height: 30px;
 
 					&::first-line {
@@ -89,6 +89,74 @@
 			font-size: 12px;
 			font-weight: 600;
 			color: #5c6a79;
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.info {
+		padding: 0 20px;
+	}
+}
+
+@media (max-width: 900px) {
+	.info {
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 30px;
+
+		.about {
+			margin-bottom: 30px;
+			width: 250px;
+			padding: 20px;
+
+			.titleAbout,
+			.txtAbout {
+				font-size: 10px;
+			}
+		}
+
+		.profile {
+			.titleProfile {
+				font-size: 20px;
+			}
+
+			.profileBlock {
+				gap: 30px;
+
+				.profileData {
+					.nameAndEmail {
+						font-size: 20px;
+						margin: 0 0 10px;
+						width: 160px;
+
+						&::first-line {
+							font-size: 10px;
+						}
+					}
+				}
+
+				.changeBlock {
+					.changeTitle {
+						font-size: 14px;
+					}
+
+					.input {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 650px) {
+	.info{
+		.profile{
+			.profileBlock{
+				justify-content: center;
+				flex-wrap: wrap;
+			}
 		}
 	}
 }

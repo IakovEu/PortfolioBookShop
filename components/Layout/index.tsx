@@ -24,7 +24,8 @@ export const Layout = ({ children }: PropsWithChildren) => {
 	const favorites = useSelector(
 		(state: RootState) => state.bookStore.favorites
 	);
-	const length = Object.keys(favorites).length;
+	const values = Object.values(favorites);
+	const amount = values.reduce((acc, el) => (acc += el.amount), 0);
 
 	return (
 		<>
@@ -48,7 +49,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 						</button>
 						<Link className={st.navigation__icons_btn_cart} href="/cart">
 							<Image src={cartSvg} alt="cart" />
-							{length > 0 && <div className={st.badge}>{length}</div>}
+							{!!amount && <div className={st.badge}>{amount}</div>}
 						</Link>
 					</div>
 				</nav>
