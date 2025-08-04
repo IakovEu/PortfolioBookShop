@@ -112,7 +112,7 @@ export const InsideCart = () => {
 					})}
 				</div>
 			)}
-			<h2 className={st.totalPrice}>TOTAL PRICE: {totalPrice} RUB</h2>
+			<h2 className={st.totalPrice}>TOTAL PRICE: {totalPrice} USD</h2>
 			<button className={st.checkoutBtn}>CHECKOUT</button>
 			<Authorization />
 		</section>
