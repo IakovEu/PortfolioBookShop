@@ -6,7 +6,7 @@
 <img width="1766" height="824" alt="BS-5" src="https://github.com/user-attachments/assets/c3439a4a-29a5-46c3-93a2-e4989b6d0667" />
 <img width="1742" height="776" alt="BS-6" src="https://github.com/user-attachments/assets/97f26321-de59-4c54-a5c4-ce12baaf3417" />
 
-- You can check my app on here https://portfolio-book-shop.vercel.app/ 
+- You can check my app here https://portfolio-book-shop.vercel.app/ 
 ## What i used
 - **React (Next.js)**
 - **TS**
